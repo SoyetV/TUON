@@ -1,0 +1,100 @@
+/* Achievement toast */
+@keyframes slideInRight {
+  from { transform: translateX(120%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+@keyframes slideOutRight {
+  from { transform: translateX(0);    opacity: 1; }
+  to   { transform: translateX(120%); opacity: 0; }
+}
+
+/* XP popup float */
+@keyframes floatUp {
+  0%   { transform: translateY(0);    opacity: 1; }
+  100% { transform: translateY(-60px); opacity: 0; }
+}
+
+/* Combo animations */
+@keyframes comboPulse {
+  0%,100% { transform: scale(1);   }
+  50%      { transform: scale(1.2); }
+}
+@keyframes comboShake {
+  0%,100% { transform: translateX(0);   }
+  25%      { transform: translateX(-4px); }
+  75%      { transform: translateX(4px);  }
+}
+
+/* Page / modal transitions */
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1);    }
+}
+
+/* Onboarding step */
+@keyframes stepIn {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0);    }
+}
+
+/* Loading bar */
+@keyframes loadFill {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+/* Results stagger */
+@keyframes statReveal {
+  from { opacity: 0; transform: translateX(-10px); }
+  to   { opacity: 1; transform: translateX(0);     }
+}
+
+/* Rank up flash */
+@keyframes rankUpFlash {
+  0%   { opacity: 0; }
+  20%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Auto-save dot */
+@keyframes savePulse {
+  0%,100% { opacity: 1;   }
+  50%      { opacity: 0.3; }
+}
+
+/* ─── Utility animation classes ─── */
+.page-enter  { animation: pageIn   0.2s  ease-out; }
+.modal-enter { animation: modalIn  0.15s ease-out; }
+.step-enter  { animation: stepIn   0.25s ease-out; }
+.stat-reveal { animation: statReveal 0.3s ease-out both; }
+.combo-pulse { animation: comboPulse 0.25s ease-out; }
+.combo-shake { animation: comboShake 0.3s  ease-out; }
+.load-bar    { animation: loadFill  1.4s  ease-out forwards; }
+.save-dot    { animation: savePulse 1.5s  ease-in-out infinite; }
+
+.achievement-toast { position: fixed; right: 24px; z-index: 9999; animation: slideInRight 0.3s ease-out; }
+.achievement-toast.hiding { animation: slideOutRight 0.3s ease-in forwards; }
+
+.xp-popup {
+  position: absolute;
+  animation: floatUp 0.9s ease-out forwards;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  color: var(--neon-amber);
+  font-size: 14px;
+  pointer-events: none;
+  z-index: 200;
+}
+
+.rank-up-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(99,179,237,0.15);
+  display: flex; align-items: center; justify-content: center;
+  animation: rankUpFlash 1.2s ease-out forwards;
+  pointer-events: none;
+}
